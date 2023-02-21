@@ -1,0 +1,71 @@
+<div class="container" style="max-width: 800px">
+  <mat-card>
+      <mat-card-content>
+        <div class="row">
+          <h1 style="text-align: center">Entrada de componentes</h1>
+        </div>
+        <form>
+          <div class="row">
+            <mat-form-field class="col-12" appearance="fill">
+              <mat-label>Fecha de ingreso</mat-label>
+              <input matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="col-12" appearance="fill">
+              <mat-label>Cliente</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let client of clients" [value]="client.value">
+                  {{client.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <h2 style="text-align: center">Datos del componente</h2>
+          </div>
+          <div class="row">
+            <mat-form-field class="col-12" appearance="fill">
+              <mat-label>Tipo de componente</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let component of componentType" [value]="component.value">
+                  {{component.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <h3 style="text-align: start">Descripcion e inventario de partes.</h3>
+            <h4 style="text-align: start; color: gray">Selecciona las opciones que aplican.</h4>
+              <p class="col-4"><mat-checkbox >Estator</mat-checkbox></p>
+              <p class="col-4"><mat-checkbox >Rotor</mat-checkbox></p>
+              <p class="col-4"><mat-checkbox >Caperuza</mat-checkbox></p>
+          </div>
+          <div class="row">
+            <p class="col-4"><mat-checkbox >Estator</mat-checkbox></p>
+            <p class="col-4"><mat-checkbox >Rotor</mat-checkbox></p>
+            <p class="col-4"><mat-checkbox >Caperuza</mat-checkbox></p>
+          </div>
+          <div class="row">
+            <p class="col-4"><mat-checkbox >Estator</mat-checkbox></p>
+            <p class="col-4"><mat-checkbox >Rotor</mat-checkbox></p>
+            <p class="col-4"><mat-checkbox >Caperuza</mat-checkbox></p>
+          </div>
+          <div class="row">
+            <p class="col-4"><mat-checkbox >Estator</mat-checkbox></p>
+            <p class="col-4"><mat-checkbox >Rotor</mat-checkbox></p>
+            <p class="col-4"><mat-checkbox >Caperuza</mat-checkbox></p>
+          </div>
+
+
+
+        </form>
+      </mat-card-content>
+    <mat-card-actions>
+      <button class="btn btn-danger">Guardar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
