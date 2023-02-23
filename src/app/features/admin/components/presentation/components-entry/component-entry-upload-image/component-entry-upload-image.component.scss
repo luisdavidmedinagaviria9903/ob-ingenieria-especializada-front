@@ -1,0 +1,13 @@
+.show_image{
+  width: 400px;
+  height: 400px;
+}
+.image-container{
+  height: auto;
+  &__option{
+    height: 400px !important;
+  }
+}
+.mat-list-option:not(.mat-list-item-disabled){
+  height: auto;
+}

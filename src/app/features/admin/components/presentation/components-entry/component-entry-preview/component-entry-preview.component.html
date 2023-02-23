@@ -1,0 +1,64 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <h1 style="text-align: center">Preview</h1>
+      </div>
+      <div class="row" style="border: solid 1px black">
+        <div class="col-6">
+          <h3>Cliente: {{clientNameField?.value}}</h3>
+        </div>
+        <div class="col-6" >
+          <h3>Fecha: {{formatDate(dateField?.value)}}</h3>
+          <h4>Hora: {{hourField?.value}}</h4>
+        </div>
+      </div>
+      <div class="row mt-3" style="border: solid 1px black" >
+        <div class="col-12">
+          <h3 style="text-align: start; font-weight: bold"> Datos del componente</h3>
+        </div>
+        <div class="col-12">
+          <p> Tipo:  <span style="color:#000;">{{componentTypeField?.value}}</span></p>
+        </div>
+      </div>
+      <div class="row mt-3" style="border: solid 1px black">
+        <ul>
+          <h3 style="text-align: start; font-weight: bold">Descripcion e inventario de partes.</h3>
+          <li *ngFor="let control of inventoryFields.controls">
+            {{control.get('name')?.value}}
+          </li>
+        </ul>
+      </div>
+      <div class="row mt-3" style="border: solid 1px black" >
+        <div class="col-12">
+          <h3 style="text-align: start; font-weight: bold"> Observaciones</h3>
+        </div>
+        <div class="col-12">
+          <p>  <span style="color:#000;">{{observationsField?.value}}</span></p>
+        </div>
+      </div>
+      <div class="row mt-3" style="border: solid 1px black">
+        <div class="col-12">
+          <h3 style="text-align: start; font-weight: bold"> Imagenes</h3>
+        </div>
+        <div class="col-12">
+          <ngb-carousel *ngIf="files && files.length > 0">
+            <ng-container *ngFor="let file of files">
+              <ng-template ngbSlide *ngIf="file.checked">
+                <div class="picsum-img-wrapper" style="width: 100%; height: 400px">
+                  <img [src]="file.blob" alt="Item Image" style="width: 100%"/>
+                </div>
+                <div class="carousel-caption" style="color: black">
+                  <h3>{{file.name}}</h3>
+                  <p>Descripcion</p>
+                  <p>Observacion</p>
+                </div>
+              </ng-template>
+            </ng-container>
+          </ngb-carousel>
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

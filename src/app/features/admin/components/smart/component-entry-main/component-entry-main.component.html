@@ -1,0 +1,43 @@
+<mat-stepper labelPosition="bottom" #stepper class="container" style="max-width: 800px">
+  <mat-step [stepControl]="generalInfoForm">
+    <ng-template matStepLabel>Datos generales</ng-template>
+    <app-component-entry-general-info [form]="generalInfoForm">
+    </app-component-entry-general-info>
+    <div>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="uploadImageForm">
+    <ng-template matStepLabel>Subir Imagenes</ng-template>
+    <app-component-entry-upload-image
+      [form]="uploadImageForm"
+      [files]="files"
+    >
+    </app-component-entry-upload-image>
+    <div>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="observationsForm">
+    <ng-template matStepLabel>Observaciones finales</ng-template>
+    <app-component-entry-observations [form]="observationsForm">
+    </app-component-entry-observations>
+    <div>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Preview</ng-template>
+    <app-component-entry-preview
+      [generalInfoForm]="generalInfoForm"
+      [files]="files"
+      [observationsForm]="observationsForm"
+    >
+    </app-component-entry-preview>
+    <button mat-raised-button matStepperPrevious>Back</button>
+    <button class="btn btn-danger">Guardar</button>
+  </mat-step>
+</mat-stepper>

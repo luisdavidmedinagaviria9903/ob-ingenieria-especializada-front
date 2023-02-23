@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {AdminHomeComponent} from "./components/presentation/admin-home/admin-home.component";
-import {ComponentsEntryComponent} from "./components/presentation/components-entry/components-entry.component";
+import {ComponentEntryMainComponent} from "./components/smart/component-entry-main/component-entry-main.component";
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'component-entry',
-    component: ComponentsEntryComponent
+    component: ComponentEntryMainComponent
   }
 
 ]

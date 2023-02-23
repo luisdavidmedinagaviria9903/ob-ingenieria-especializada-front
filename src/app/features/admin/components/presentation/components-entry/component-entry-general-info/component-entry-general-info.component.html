@@ -1,0 +1,68 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <h1 style="text-align: center">Entrada de componentes</h1>
+      </div>
+      <form [formGroup]="form">
+        <div class="row">
+          <mat-form-field class="col-12" appearance="fill">
+            <mat-label>Fecha de ingreso</mat-label>
+            <input matInput
+                   [matDatepicker]="datePicker"
+                   formControlName="date"
+            >
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+            <mat-datepicker #datePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="col-12" appearance="fill">
+            <mat-label>Hora de ingreso</mat-label>
+            <input matInput
+                   [ngxTimepicker]="hourPicker"
+                   [format]="24"
+                   formControlName="hour" readonly>
+            <ngx-material-timepicker #hourPicker></ngx-material-timepicker>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="col-12" appearance="fill">
+            <mat-label>Cliente</mat-label>
+            <mat-select formControlName="client">
+              <mat-option *ngFor="let client of clients" [value]="client.name">
+                {{client.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <h2 style="text-align: center">Datos del componente</h2>
+        </div>
+        <div class="row">
+          <mat-form-field class="col-12" appearance="fill">
+            <mat-label>Tipo de componente</mat-label>
+            <mat-select formControlName="component_type">
+              <mat-option *ngFor="let component of componentType" [value]="component.name">
+                {{component.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="row" formArrayName="inventory">
+          <h3 style="text-align: start">Descripcion e inventario de partes.</h3>
+          <h4 style="text-align: start; color: gray">Selecciona las opciones que aplican.</h4>
+          <ng-container *ngFor="let inventory of inventory; let i=index " >
+            <p class="col" [formGroupName]="i">
+              <mat-checkbox [value]="inventory.name" (change)="setChecked(inventory,$event, i)">
+                  {{inventory.name}}
+              </mat-checkbox>
+            </p>
+          </ng-container>
+        </div>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>

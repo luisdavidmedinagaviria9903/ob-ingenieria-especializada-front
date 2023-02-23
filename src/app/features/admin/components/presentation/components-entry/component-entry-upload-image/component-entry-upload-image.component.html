@@ -1,0 +1,38 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <h1 style="text-align: center">Subir imagenes</h1>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <div class="file-container">
+            <input matInput readonly/>
+            <input
+              (change)="uploadFile($event)"
+              accept="image/*"
+              type="file"
+              multiple
+            />
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <form [formGroup]="form">
+          <ng-container *ngIf="files && files.length > 0">
+            <mat-selection-list class="image-container">
+              <mat-list-option *ngFor="let image of files; let i=index"
+                               [selected]="image.checked"
+                               [value]="image"
+                               class="image-container__option"
+                               (click)="setSelected(image)"
+              >
+                <img class="show_image" [src]="image.blob" alt="image item">
+              </mat-list-option>
+            </mat-selection-list>
+          </ng-container>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
