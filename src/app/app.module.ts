@@ -13,12 +13,14 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import { AdminMenuComponent } from './features/shared/components/admin-menu/admin-menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    AdminMenuComponent,
   ],
   imports: [
     BrowserModule,

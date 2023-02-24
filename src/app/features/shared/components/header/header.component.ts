@@ -11,13 +11,4 @@ export class HeaderComponent {
   @ViewChild('sidenav', {}) sidenav!: MatSidenav;
   constructor() {
   }
-
-  openSideNav() {
-    console.log('sidenav');
-    this.sidenav.toggle().then(r => {
-      console.log(r);
-      document.getElementById("sidenavContainer");
-    })
-
-  }
 }

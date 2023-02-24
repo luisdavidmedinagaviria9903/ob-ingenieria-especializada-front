@@ -2,24 +2,16 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <div class="col" style="display: inline">
-      <button mat-icon-button>
-        <mat-icon (click)="openSideNav()">menu</mat-icon>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon >menu</mat-icon>
       </button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container #sidenavContainer id="sidenavContainer" class="mat-elevation-z8">
-  <mat-sidenav #sidenav mode="side">
+  <mat-sidenav #sidenav mode="side" style="width: 20%">
     <mat-nav-list>
-      <a id="component-entry-link"
-         (click)="sidenav.close()"
-         [routerLink]="'/admin/component-entry'"
-         mat-list-item
-         routerLinkActive="active"
-      >
-        <mat-icon aria-hidden="false" aria-label="Icon">list</mat-icon>
-
-      </a>
+      <app-admin-menu [sidenav]="sidenav"></app-admin-menu>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
