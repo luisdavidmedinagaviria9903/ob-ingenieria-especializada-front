@@ -31,8 +31,8 @@
           <mat-form-field class="col-12" appearance="fill">
             <mat-label>Cliente</mat-label>
             <mat-select formControlName="client">
-              <mat-option *ngFor="let client of clients" [value]="client.name">
-                {{client.name}}
+              <mat-option *ngFor="let client of clients" [value]="client.id">
+                {{client.firstName ? client.firstName : '' + client.secondName ? client.secondName : ''}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -43,26 +43,30 @@
         <div class="row">
           <mat-form-field class="col-12" appearance="fill">
             <mat-label>Tipo de componente</mat-label>
-            <mat-select formControlName="component_type">
-              <mat-option *ngFor="let component of componentType" [value]="component.name">
-                {{component.name}}
+            <mat-select formControlName="component_type" (valueChange)="getSpecs($event)">
+              <mat-option *ngFor="let component of componentType" [value]="component.code">
+                {{component.description}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="row" formArrayName="inventory">
+        <div class="row" formArrayName="inventory" *ngIf="inventory.length > 0">
           <h3 style="text-align: start">Descripcion e inventario de partes.</h3>
           <h4 style="text-align: start; color: gray">Selecciona las opciones que aplican.</h4>
           <ng-container *ngFor="let inventory of inventory; let i=index " >
-            <p class="col" [formGroupName]="i">
-              <mat-checkbox [value]="inventory.name" (change)="setChecked(inventory,$event, i)">
-                  {{inventory.name}}
+            <p class="col-4" [formGroupName]="i">
+              <mat-checkbox color="primary" [value]="inventory.componentSpec.code" (change)="setChecked(inventory,$event, i)">
+                  {{inventory.componentSpec.description}}
               </mat-checkbox>
             </p>
           </ng-container>
         </div>
       </form>
     </mat-card-content>
+
+    <mat-card-actions>
+      <pre>{{form.value | json}}</pre>
+    </mat-card-actions>
 
   </mat-card>
 </div>

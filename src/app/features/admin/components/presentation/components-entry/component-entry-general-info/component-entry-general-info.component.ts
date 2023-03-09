@@ -1,35 +1,49 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatCheckboxChange} from "@angular/material/checkbox";
+import {ComponentTypeDto} from "../../../../model/dto/componentType.dto";
+import {ComponentEntryService} from "../../../../service/component-entry.service";
+import {ComponentEntryTypeSpecsDto} from "../../../../model/dto/component-entry-type-specs.dto";
+import {UserDto} from "../../../../model/dto/user.dto";
+import {UserService} from "../../../../service/user.service";
 
 @Component({
   selector: 'app-component-entry-general-info',
   templateUrl: './component-entry-general-info.component.html',
   styleUrls: ['./component-entry-general-info.component.scss']
 })
-export class ComponentEntryGeneralInfoComponent implements AfterViewInit{
-  clients: Client[] = [{value: 0, name: 'Bavaria'}, {value: 0, name: 'Camaguey'}];
-  componentType: ComponentType[] = [
-    {value: 0, name: 'Motor A/C'}, {value: 0, name: 'Motor DC'},
-    {value: 0, name: 'Bomba sumergible'}, {value: 0, name: 'Generador'},
-    {value: 0, name: 'Motor 1PH'}, {value: 0, name: 'Bomba centrifuga'}
-  ]
-  inventory: ComponentInventory[] = [
-    {value: 0, name: 'Estator'}, {value: 0, name: 'Rotor'}, {value: 0, name: 'Caperuza'}
-  ]
+export class ComponentEntryGeneralInfoComponent implements OnInit{
+  clients: UserDto[] = [];
+  componentType: ComponentTypeDto[] = [];
+  inventory: ComponentEntryTypeSpecsDto[] = []
+
+
   @Input()
   form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private componentEntryService: ComponentEntryService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
-    this.inventory.forEach(() => this.inventoryField.push(this.buildInventoryForm()))
+    this.userService.getAllClients()
+      .subscribe(resultClients => (this.clients = resultClients));
+    this.componentEntryService.getAllComponentType()
+      .subscribe(result => (this.componentType = result));
   }
-  ngAfterViewInit(): void {
 
+
+
+  getSpecs($event: any) {
+    console.log($event)
+    this.componentEntryService.getAllComponentEntrySpecsInventory($event)
+      .subscribe(result => {
+        this.inventoryField.clear();
+        this.inventory = result;
+        result.forEach(() => this.inventoryField.push(this.buildInventoryForm()));
+      });
   }
-
 
 
   get inventoryField(){
@@ -43,28 +57,16 @@ export class ComponentEntryGeneralInfoComponent implements AfterViewInit{
   }
 
 
-  setChecked(inventory: ComponentInventory, $event: MatCheckboxChange, i: number) {
+  setChecked(inventory: ComponentEntryTypeSpecsDto, $event: MatCheckboxChange, i: number) {
     let fieldAt = this.inventoryField.at(i);
     if ($event.checked){
-      fieldAt.get('name')?.setValue(inventory.name);
+      fieldAt.get('name')?.setValue(inventory.componentSpec.code);
       fieldAt.get('checked')?.setValue($event.checked);
     }else {
       fieldAt.reset();
     }
 
   }
-}
 
-interface Client {
-  value: number;
-  name: string;
-}
-interface ComponentType {
-  value: number;
-  name: string;
-}
 
-interface ComponentInventory {
-  value: number;
-  name: string;
 }

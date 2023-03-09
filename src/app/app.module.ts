@@ -14,6 +14,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import { AdminMenuComponent } from './features/shared/components/admin-menu/admin-menu.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AdminMenuComponent } from './features/shared/components/admin-menu/admi
     MatIconModule,
     MatMenuModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
