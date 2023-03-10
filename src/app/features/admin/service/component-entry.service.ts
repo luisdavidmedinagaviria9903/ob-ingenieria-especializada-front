@@ -16,6 +16,8 @@ export class ComponentEntryService {
   private getAllComponentEntrySpecUrl = `${this.apiUrl}component-entry/findAll/specs/`;
   private saveComponentEntryUrl = `${this.apiUrl}component-entry/save`;
 
+  private getAllComponentEntryUrl = `${this.apiUrl}component-entry/findAll`;
+
 
   constructor(private http: HttpClient) { }
 
@@ -51,6 +53,10 @@ export class ComponentEntryService {
         return []
       })
     )
+  }
+
+  getAllComponentEntry():  Observable<any>{
+    return this.http.get<any>(this.getAllComponentEntryUrl);
   }
 
 

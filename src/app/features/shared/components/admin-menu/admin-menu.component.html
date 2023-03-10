@@ -1,17 +1,31 @@
-<div>
-  <a id="component-entry-link"
+<mat-list-item>
+  <button  mat-icon-button
+           routerLinkActive="active"
+           [matMenuTriggerFor]="componentEntryMenu"
+  style="font-size: 1.0rem">
+    <mat-icon>arrow_circle_right</mat-icon>
+    Entrada de componentes
+  </button>
+  <mat-menu #componentEntryMenu>
+    <button id="component-entry-create-link"
        (click)="sidenav.close()"
-       [routerLink]="'/admin/component-entry'"
-       mat-list-item
+       [routerLink]="'/admin/component-entry/create'"
        routerLinkActive="active"
+       mat-menu-item>
+      <mat-icon>add</mat-icon>
+      crear entrada
+    </button>
+    <button id="component-entry-list-link"
+            (click)="sidenav.close()"
+            [routerLink]="'/admin/component-entry/list-all'"
+            routerLinkActive="active"
+            mat-menu-item>
+      <mat-icon>list</mat-icon>
+      listar entradas
+    </button>
+  </mat-menu>
 
-    >
-    <mat-icon>
-      <span>arrow_circle_right</span>
-    </mat-icon>
-    <span>Entrada de componentes</span>
-  </a>
-</div>
+</mat-list-item>
 <div>
   <a id="component-evaluate-link"
      (click)="sidenav.close()"

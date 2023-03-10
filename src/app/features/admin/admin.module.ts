@@ -19,27 +19,32 @@ import { ComponentEntryObservationsComponent } from './components/presentation/c
 import { ComponentEntryPreviewComponent } from './components/presentation/components-entry/component-entry-preview/component-entry-preview.component';
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {NgbCarousel, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
+import { ComponentEntryListComponent } from './components/presentation/components-entry/component-entry-list/component-entry-list.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
 @NgModule({
-  declarations: [AdminHomeComponent, ComponentEntryMainComponent, ComponentEntryGeneralInfoComponent, ComponentEntryUploadImageComponent, ComponentEntryObservationsComponent, ComponentEntryPreviewComponent],
-  imports: [
-    CommonModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    AdminRoutingModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatStepperModule,
-    MatButtonModule,
-    MatListModule,
-    NgxMaterialTimepickerModule,
-    NgbCarousel,
-    NgbSlide
-  ]
+  declarations: [AdminHomeComponent, ComponentEntryMainComponent, ComponentEntryGeneralInfoComponent, ComponentEntryUploadImageComponent, ComponentEntryObservationsComponent, ComponentEntryPreviewComponent, ComponentEntryListComponent],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        AdminRoutingModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatStepperModule,
+        MatButtonModule,
+        MatListModule,
+        NgxMaterialTimepickerModule,
+        NgbCarousel,
+        NgbSlide,
+        MatTableModule,
+        MatIconModule
+    ]
 })
 export class AdminModule { }
