@@ -55,8 +55,8 @@ export class ComponentEntryService {
     )
   }
 
-  getAllComponentEntry():  Observable<any>{
-    return this.http.get<any>(this.getAllComponentEntryUrl);
+  getAllComponentEntry(params: any):  Observable<any>{
+    return this.http.post<any>(this.getAllComponentEntryUrl, params);
   }
 
 

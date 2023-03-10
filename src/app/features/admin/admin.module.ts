@@ -22,29 +22,33 @@ import {NgbCarousel, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
 import { ComponentEntryListComponent } from './components/presentation/components-entry/component-entry-list/component-entry-list.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 
 
 @NgModule({
   declarations: [AdminHomeComponent, ComponentEntryMainComponent, ComponentEntryGeneralInfoComponent, ComponentEntryUploadImageComponent, ComponentEntryObservationsComponent, ComponentEntryPreviewComponent, ComponentEntryListComponent],
-    imports: [
-        CommonModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        AdminRoutingModule,
-        MatInputModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        MatStepperModule,
-        MatButtonModule,
-        MatListModule,
-        NgxMaterialTimepickerModule,
-        NgbCarousel,
-        NgbSlide,
-        MatTableModule,
-        MatIconModule
-    ]
+  imports: [
+    CommonModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    AdminRoutingModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatListModule,
+    NgxMaterialTimepickerModule,
+    NgbCarousel,
+    NgbSlide,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule
+  ]
 })
 export class AdminModule { }
