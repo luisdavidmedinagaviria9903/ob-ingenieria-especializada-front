@@ -51,8 +51,9 @@ export class ComponentEntryGeneralInfoComponent implements OnInit{
   }
   buildInventoryForm(){
     return this.formBuilder.group({
-      name: ['', Validators.required],
-      checked: ['', Validators.required]
+      code: [''],
+      name: [''],
+      checked: ['']
     })
   }
 
@@ -60,7 +61,8 @@ export class ComponentEntryGeneralInfoComponent implements OnInit{
   setChecked(inventory: ComponentEntryTypeSpecsDto, $event: MatCheckboxChange, i: number) {
     let fieldAt = this.inventoryField.at(i);
     if ($event.checked){
-      fieldAt.get('name')?.setValue(inventory.componentSpec.code);
+      fieldAt.get('code')?.setValue(inventory.componentSpec.code)
+      fieldAt.get('name')?.setValue(inventory.componentSpec.description);
       fieldAt.get('checked')?.setValue($event.checked);
     }else {
       fieldAt.reset();

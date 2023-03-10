@@ -4,8 +4,7 @@
     <app-component-entry-general-info [form]="generalInfoForm">
     </app-component-entry-general-info>
     <div>
-      <button mat-raised-button matStepperPrevious>Back</button>
-      <button mat-raised-button matStepperNext>Next</button>
+      <button mat-raised-button matStepperNext [disabled]="generalInfoForm?.invalid">Next</button>
     </div>
   </mat-step>
   <mat-step [stepControl]="uploadImageForm">
@@ -17,7 +16,7 @@
     </app-component-entry-upload-image>
     <div>
       <button mat-raised-button matStepperPrevious>Back</button>
-      <button mat-raised-button matStepperNext>Next</button>
+      <button mat-raised-button matStepperNext [disabled]="files.length <= 0">Next</button>
     </div>
   </mat-step>
   <mat-step [stepControl]="observationsForm">
@@ -38,6 +37,6 @@
     >
     </app-component-entry-preview>
     <button mat-raised-button matStepperPrevious>Back</button>
-    <button class="btn btn-danger">Guardar</button>
+    <button class="btn btn-danger" (click)="saveEntry()">Guardar</button>
   </mat-step>
 </mat-stepper>

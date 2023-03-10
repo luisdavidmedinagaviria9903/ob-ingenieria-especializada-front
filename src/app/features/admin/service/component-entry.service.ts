@@ -4,6 +4,7 @@ import {environment} from "../../../../environments/environment";
 import {catchError, map, Observable} from "rxjs";
 import {ComponentTypeDto} from "../model/dto/componentType.dto";
 import {ComponentEntryTypeSpecsDto} from "../model/dto/component-entry-type-specs.dto";
+import {ComponentEntryDto} from "../model/dto/component-entry.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,15 @@ export class ComponentEntryService {
   private apiUrl = environment.apiUrl;
   private getAllComponentTypeUrl = `${this.apiUrl}component-entry/findAll/component/type`;
   private getAllComponentEntrySpecUrl = `${this.apiUrl}component-entry/findAll/specs/`;
+  private saveComponentEntryUrl = `${this.apiUrl}component-entry/save`;
 
 
   constructor(private http: HttpClient) { }
+
+
+  saveComponentEntry(params: ComponentEntryDto){
+    return this.http.post<any>(this.saveComponentEntryUrl, params);
+  }
 
 
   getAllComponentType(): Observable<ComponentTypeDto[]>{

@@ -24,9 +24,11 @@
       <div class="row mt-3" style="border: solid 1px black">
         <ul>
           <h3 style="text-align: start; font-weight: bold">Descripcion e inventario de partes.</h3>
-          <li *ngFor="let control of inventoryFields.controls">
-            {{control.get('name')?.value}}
-          </li>
+          <ng-container *ngFor="let control of inventoryFields.controls">
+            <li *ngIf="control.get('checked')?.value">
+              {{control.get('name')?.value}}
+            </li>
+          </ng-container>
         </ul>
       </div>
       <div class="row mt-3" style="border: solid 1px black" >
