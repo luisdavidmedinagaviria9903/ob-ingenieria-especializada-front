@@ -1,4 +1,15 @@
 <mat-list-item>
+  <button id="component-list-link"
+          (click)="sidenav.close()"
+          [routerLink]="'/admin/component/list-all'"
+          routerLinkActive="active"
+          mat-menu-item>
+    <mat-icon>analytics</mat-icon>
+     Componentes
+  </button>
+</mat-list-item>
+
+<mat-list-item>
   <button  mat-icon-button
            routerLinkActive="active"
            [matMenuTriggerFor]="componentEntryMenu"
@@ -26,7 +37,7 @@
   </mat-menu>
 
 </mat-list-item>
-<div>
+<mat-list-item>
   <a id="component-evaluate-link"
      (click)="sidenav.close()"
      [routerLink]="'/admin/component-entry'"
@@ -39,8 +50,8 @@
     </mat-icon>
     <span>Evaluacion general</span>
   </a>
-</div>
-<div>
+</mat-list-item>
+<mat-list-item>
   <a id="component-cost-link"
      (click)="sidenav.close()"
      [routerLink]="'/admin/component-entry'"
@@ -53,8 +64,8 @@
     </mat-icon>
     <span>Relacion de costos</span>
   </a>
-</div>
-<div>
+</mat-list-item>
+<mat-list-item>
   <a id="component-order-link"
      (click)="sidenav.close()"
      [routerLink]="'/admin/component-entry'"
@@ -69,9 +80,9 @@
     </mat-icon>
     <span>Cotizacion</span>
   </a>
-</div>
+</mat-list-item>
 
-<div>
+<mat-list-item>
   <a id="component-inventory-link"
      (click)="sidenav.close()"
      [routerLink]="'/admin/component-entry'"
@@ -86,4 +97,4 @@
     </mat-icon>
     <span>Inventario</span>
   </a>
-</div>
+</mat-list-item>

@@ -24,11 +24,14 @@ import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
+import { ComponentListComponent } from './components/presentation/component-list/component-list.component';
+import { ComponentEvaluationComponent } from './components/presentation/component-evaluation/component-evaluation.component';
+import { ComponentEvaluationMainComponent } from './components/smart/component-evaluation-main/component-evaluation-main.component';
 
 
 
 @NgModule({
-  declarations: [AdminHomeComponent, ComponentEntryMainComponent, ComponentEntryGeneralInfoComponent, ComponentEntryUploadImageComponent, ComponentEntryObservationsComponent, ComponentEntryPreviewComponent, ComponentEntryListComponent],
+  declarations: [AdminHomeComponent, ComponentEntryMainComponent, ComponentEntryGeneralInfoComponent, ComponentEntryUploadImageComponent, ComponentEntryObservationsComponent, ComponentEntryPreviewComponent, ComponentEntryListComponent, ComponentListComponent, ComponentEvaluationComponent, ComponentEvaluationMainComponent],
   imports: [
     CommonModule,
     MatCardModule,

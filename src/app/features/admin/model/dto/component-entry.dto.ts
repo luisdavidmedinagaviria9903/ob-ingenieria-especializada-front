@@ -9,7 +9,6 @@ export class ComponentEntryDto{
   observation!: string;
   entryDate!: string;
   creationDate!: string;
-  component!: ComponentDto;
   inventory!: ComponentEntryInventoryDto[];
   pictures!: ComponentEntryPicturesDto[];
 }

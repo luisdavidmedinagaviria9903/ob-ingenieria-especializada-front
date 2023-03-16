@@ -1,7 +1,9 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormArray, FormGroup} from "@angular/forms";
 import {Image} from "../../../smart/component-entry-main/component-entry-main.component";
 import {DateUtil} from "../../../../../shared/dateUtil";
+import {ComponentEntryDto} from "../../../../model/dto/component-entry.dto";
+import {ComponentDto} from "../../../../model/dto/component.dto";
 
 
 @Component({
@@ -10,7 +12,7 @@ import {DateUtil} from "../../../../../shared/dateUtil";
   styleUrls: ['./component-entry-preview.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ComponentEntryPreviewComponent {
+export class ComponentEntryPreviewComponent implements OnInit {
 
   @Input()
   generalInfoForm!: FormGroup;
@@ -18,6 +20,9 @@ export class ComponentEntryPreviewComponent {
   files!: Image[];
   @Input()
   observationsForm!: FormGroup;
+
+  @Input()
+  component!: ComponentDto;
 
 
 
@@ -42,4 +47,10 @@ export class ComponentEntryPreviewComponent {
   formatDate(date: any){
     return DateUtil.formatDate(date, 'yyyy-MM-DD');
   }
+
+  ngOnInit(): void {
+    console.log(this.component.componentEntry.inventory)
+  }
+
+
 }

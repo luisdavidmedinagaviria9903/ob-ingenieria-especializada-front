@@ -15,6 +15,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import { AdminMenuComponent } from './features/shared/components/admin-menu/admin-menu.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -36,8 +37,10 @@ import {HttpClientModule} from "@angular/common/http";
     MatSidenavModule,
     MatListModule,
     HttpClientModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

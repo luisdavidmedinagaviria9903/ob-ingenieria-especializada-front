@@ -6,11 +6,21 @@ import {ComponentEntryMainComponent} from "./components/smart/component-entry-ma
 import {
   ComponentEntryListComponent
 } from "./components/presentation/components-entry/component-entry-list/component-entry-list.component";
+import {ComponentListComponent} from "./components/presentation/component-list/component-list.component";
 
 const routes: Routes = [
   {
     path: '',
     component: AdminHomeComponent
+  },
+  {
+    path: 'component',
+    children: [
+      {
+        path: 'list-all',
+        component: ComponentListComponent,
+      },
+    ]
   },
   {
     path: 'component-entry',

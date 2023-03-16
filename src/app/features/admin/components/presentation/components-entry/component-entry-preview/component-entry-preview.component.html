@@ -6,11 +6,11 @@
       </div>
       <div class="row" style="border: solid 1px black">
         <div class="col-6">
-          <h3>Cliente: {{clientNameField?.value}}</h3>
+          <h3>Cliente: {{component ? component.componentEntry.client.firstName : clientNameField?.value}}</h3>
         </div>
         <div class="col-6" >
-          <h3>Fecha: {{formatDate(dateField?.value)}}</h3>
-          <h4>Hora: {{hourField?.value}}</h4>
+          <h3>Fecha: {{formatDate(component ? component.componentEntry.entryDate : dateField?.value)}}</h3>
+          <h4>Hora: {{component ? '' :  hourField?.value}}</h4>
         </div>
       </div>
       <div class="row mt-3" style="border: solid 1px black" >
@@ -18,16 +18,27 @@
           <h3 style="text-align: start; font-weight: bold"> Datos del componente</h3>
         </div>
         <div class="col-12">
-          <p> Tipo:  <span style="color:#000;">{{componentTypeField?.value}}</span></p>
+          <p> Tipo:  <span style="color:#000;">{{component ? component.type : componentTypeField?.value}}</span></p>
         </div>
       </div>
       <div class="row mt-3" style="border: solid 1px black">
         <ul>
           <h3 style="text-align: start; font-weight: bold">Descripcion e inventario de partes.</h3>
-          <ng-container *ngFor="let control of inventoryFields.controls">
-            <li *ngIf="control.get('checked')?.value">
-              {{control.get('name')?.value}}
-            </li>
+          <ng-container *ngIf="component">
+            <ng-template *ngFor="let inventory of component.componentEntry.inventory">
+              <li>
+                {{inventory.code}}
+              </li>
+            </ng-template>
+          </ng-container>
+
+          <ng-container *ngIf="!component">
+            <ng-template *ngFor="let control of inventoryFields.controls">
+              <li *ngIf="control.get('checked')?.value">
+                {{control.get('name')?.value}}
+              </li>
+            </ng-template>
+
           </ng-container>
         </ul>
       </div>
@@ -36,7 +47,7 @@
           <h3 style="text-align: start; font-weight: bold"> Observaciones</h3>
         </div>
         <div class="col-12">
-          <p>  <span style="color:#000;">{{observationsField?.value}}</span></p>
+          <p>  <span style="color:#000;">{{component ? component.componentEntry.observation : observationsField?.value}}</span></p>
         </div>
       </div>
       <div class="row mt-3" style="border: solid 1px black">

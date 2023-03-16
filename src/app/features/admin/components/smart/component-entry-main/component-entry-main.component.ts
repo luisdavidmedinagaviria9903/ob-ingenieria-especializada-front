@@ -13,7 +13,9 @@ import {
   TITLE_INFO, TITLE_SUCCESS
 } from "../../../../shared/popup-alert";
 import {MatStepper} from "@angular/material/stepper";
-import {ComponentEntryService} from "../../../service/component-entry.service";
+import {ComponentEntryService} from "../../../service/component/component-entry.service";
+import {DateUtil} from "../../../../shared/dateUtil";
+import {ComponentService} from "../../../service/component/component.service";
 
 @Component({
   selector: 'app-component-entry-main',
@@ -31,7 +33,8 @@ export class ComponentEntryMainComponent {
   private myStepper!: MatStepper;
 
   constructor(private formBuilder: FormBuilder,
-              private componentEntryService: ComponentEntryService) {
+              private componentEntryService: ComponentEntryService,
+              private componentService: ComponentService) {
     this.generalInfoForm = this.buildGeneralInfoForm();
     this.uploadImageForm = this.buildUploadImageForm();
     this.observationsForm = this.buildObservationForm();
@@ -62,21 +65,20 @@ export class ComponentEntryMainComponent {
       show_popup(TITLE_INFO, INVALID_OR_MISSING_FIELDS).then(() => this.myStepper.selectedIndex = 0)
       return;
     }
+    let component = new ComponentDto();
     let componentEntry = new ComponentEntryDto();
     let client = new UserDto();
-    let component = new ComponentDto();
     let componentInventory: ComponentEntryInventoryDto[] = [];
     let componentPictures: ComponentEntryPicturesDto[] = [];
 
     client.id = this.clientField?.value;
     componentEntry.client = client;
     componentEntry.observation = this.observationField?.value;
-    componentEntry.entryDate = this.dateField?.value;
+    componentEntry.entryDate = DateUtil.addHourToDate(this.dateField?.value, this.hourField?.value)
 
     component.type = this.componentTypeField?.value;
     //TODO: User must be authenticated
     component.creationUser = "1";
-    componentEntry.component = component;
 
     this.inventoryField.controls.forEach(item => {
       let itemChecked = item.get('checked')?.value;
@@ -98,8 +100,9 @@ export class ComponentEntryMainComponent {
     })
     componentEntry.inventory = componentInventory;
     componentEntry.pictures = componentPictures;
+    component.componentEntry = componentEntry;
 
-    this.componentEntryService.saveComponentEntry(componentEntry).subscribe({
+   this.componentService.saveComponent(component).subscribe({
       next: value => {
           if (value && value.id){
             show_popup(TITLE_SUCCESS, "Registro guardado correctamente").then(() => {
@@ -114,6 +117,7 @@ export class ComponentEntryMainComponent {
         show_popup(TITLE_ERROR, CONTACT_SUPPORT);
       }
     })
+
     console.log(componentEntry);
   }
 

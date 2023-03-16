@@ -2,10 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatCheckboxChange} from "@angular/material/checkbox";
 import {ComponentTypeDto} from "../../../../model/dto/componentType.dto";
-import {ComponentEntryService} from "../../../../service/component-entry.service";
+import {ComponentEntryService} from "../../../../service/component/component-entry.service";
 import {ComponentEntryTypeSpecsDto} from "../../../../model/dto/component-entry-type-specs.dto";
 import {UserDto} from "../../../../model/dto/user.dto";
 import {UserService} from "../../../../service/user.service";
+import {ComponentService} from "../../../../service/component/component.service";
 
 @Component({
   selector: 'app-component-entry-general-info',
@@ -23,13 +24,14 @@ export class ComponentEntryGeneralInfoComponent implements OnInit{
 
   constructor(private formBuilder: FormBuilder,
               private componentEntryService: ComponentEntryService,
+              private componentService: ComponentService,
               private userService: UserService) {
   }
 
   ngOnInit() {
     this.userService.getAllClients()
       .subscribe(resultClients => (this.clients = resultClients));
-    this.componentEntryService.getAllComponentType()
+    this.componentService.getAllComponentType()
       .subscribe(result => (this.componentType = result));
   }
 
