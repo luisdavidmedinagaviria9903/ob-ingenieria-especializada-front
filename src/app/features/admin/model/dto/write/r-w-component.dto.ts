@@ -1,6 +1,6 @@
 import {UserDto} from "../read/user.dto";
 
-export class WComponentDto{
+export class RWComponentDto {
   id!: number;
   type!: number;
   eq!: string;

@@ -1,0 +1,21 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <h1 style="text-align: center">Evaluacion general de componentes</h1>
+      </div>
+      <form [formGroup]="form">
+        <div class="row">
+          <mat-form-field class="col-12" appearance="fill">
+            <mat-label>Selecciona una entrada de componente</mat-label>
+            <mat-select formControlName="entry">
+              <mat-option *ngFor="let entry of entries" [value]="entry.id">
+                {{entry.component.eq + ' ' + entry.component.type + ' ' + entry.component.client + ' ' + entry.creationDate}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

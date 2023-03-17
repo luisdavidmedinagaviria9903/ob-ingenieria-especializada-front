@@ -26,13 +26,14 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import { ComponentListComponent } from './components/presentation/component-list/component-list.component';
 import { ComponentEvaluationMainComponent } from './components/smart/component-evaluation-main/component-evaluation-main.component';
+import { SelectEntryComponent } from './components/presentation/component-evaluation/select-entry/select-entry.component';
 
 
 
 @NgModule({
   declarations: [AdminHomeComponent, ComponentEntryMainComponent, ComponentEntryGeneralInfoComponent,
     ComponentEntryUploadImageComponent, ComponentEntryObservationsComponent, ComponentEntryPreviewComponent,
-    ComponentEntryListComponent, ComponentListComponent, ComponentEvaluationMainComponent],
+    ComponentEntryListComponent, ComponentListComponent, ComponentEvaluationMainComponent, SelectEntryComponent],
   imports: [
     CommonModule,
     MatCardModule,

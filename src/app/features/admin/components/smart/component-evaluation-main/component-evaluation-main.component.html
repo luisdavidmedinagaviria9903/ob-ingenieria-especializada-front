@@ -1,2 +1,10 @@
-
+<mat-stepper labelPosition="bottom" #stepper class="container" style="max-width: 800px">
+  <mat-step [stepControl]="selectEntryForm">
+    <ng-template matStepLabel>Seleccionar entrada</ng-template>
+    <app-select-entry [form]="selectEntryForm"></app-select-entry>
+    <div>
+      <button mat-raised-button matStepperNext [disabled]="selectEntryForm?.invalid">Next</button>
+    </div>
+  </mat-step>
+</mat-stepper>
 

@@ -13,11 +13,11 @@ import {
   TITLE_INFO, TITLE_SUCCESS
 } from "../../../../shared/popup-alert";
 import {MatStepper} from "@angular/material/stepper";
-import {ComponentEntryService} from "../../../service/component/component-entry.service";
+import {ComponentEntryService} from "../../../service/component-entry/component-entry.service";
 import {DateUtil} from "../../../../shared/dateUtil";
 import {ComponentService} from "../../../service/component/component.service";
-import {WComponentDto} from "../../../model/dto/write/w-component.dto";
-import {WComponentEntryDto} from "../../../model/dto/write/w-component-entry.dto";
+import {RWComponentDto} from "../../../model/dto/write/r-w-component.dto";
+import {RWComponentEntryDto} from "../../../model/dto/write/r-w-component-entry.dto";
 
 @Component({
   selector: 'app-component-entry-main',
@@ -67,8 +67,8 @@ export class ComponentEntryMainComponent {
       show_popup(TITLE_INFO, INVALID_OR_MISSING_FIELDS).then(() => this.myStepper.selectedIndex = 0)
       return;
     }
-    let component = new WComponentDto();
-    let componentEntry = new WComponentEntryDto();
+    let component = new RWComponentDto();
+    let componentEntry = new RWComponentEntryDto();
     let componentInventory: ComponentEntryInventoryDto[] = [];
     let componentPictures: ComponentEntryPicturesDto[] = [];
 

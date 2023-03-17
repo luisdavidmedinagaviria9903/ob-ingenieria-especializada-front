@@ -7,6 +7,9 @@ import {
   ComponentEntryListComponent
 } from "./components/presentation/components-entry/component-entry-list/component-entry-list.component";
 import {ComponentListComponent} from "./components/presentation/component-list/component-list.component";
+import {
+  ComponentEvaluationMainComponent
+} from "./components/smart/component-evaluation-main/component-evaluation-main.component";
 
 const routes: Routes = [
   {
@@ -33,6 +36,15 @@ const routes: Routes = [
         path: 'list-all',
         component: ComponentEntryListComponent,
       },
+    ]
+  },
+  {
+    path: 'component-evaluation',
+    children: [
+      {
+        path: 'create',
+        component: ComponentEvaluationMainComponent,
+      }
     ]
   }
 

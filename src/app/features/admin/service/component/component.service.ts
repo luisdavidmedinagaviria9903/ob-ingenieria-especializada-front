@@ -5,7 +5,7 @@ import {ComponentDto} from "../../model/dto/read/component.dto";
 import {catchError, map, Observable} from "rxjs";
 import {ComponentTypeDto} from "../../model/dto/read/componentType.dto";
 import {ComponentEntryTypeSpecsDto} from "../../model/dto/read/component-entry-type-specs.dto";
-import {WComponentEntryDto} from "../../model/dto/write/w-component-entry.dto";
+import {RWComponentEntryDto} from "../../model/dto/write/r-w-component-entry.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ComponentService {
   constructor(private http: HttpClient) { }
 
 
-  saveComponent(params: WComponentEntryDto){
+  saveComponent(params: RWComponentEntryDto){
     return this.http.post<any>(this.saveComponentUrl, params);
   }
 
