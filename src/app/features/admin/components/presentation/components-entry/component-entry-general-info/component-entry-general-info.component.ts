@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatCheckboxChange} from "@angular/material/checkbox";
-import {ComponentTypeDto} from "../../../../model/dto/componentType.dto";
+import {ComponentTypeDto} from "../../../../model/dto/read/componentType.dto";
 import {ComponentEntryService} from "../../../../service/component/component-entry.service";
-import {ComponentEntryTypeSpecsDto} from "../../../../model/dto/component-entry-type-specs.dto";
-import {UserDto} from "../../../../model/dto/user.dto";
+import {ComponentEntryTypeSpecsDto} from "../../../../model/dto/read/component-entry-type-specs.dto";
+import {UserDto} from "../../../../model/dto/read/user.dto";
 import {UserService} from "../../../../service/user.service";
 import {ComponentService} from "../../../../service/component/component.service";
 

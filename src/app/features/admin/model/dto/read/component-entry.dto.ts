@@ -5,7 +5,7 @@ import {ComponentEntryPicturesDto} from "./component-entry-pictures.dto";
 
 export class ComponentEntryDto{
   id!: number;
-  client!: UserDto;
+  creationUser!: UserDto;
   observation!: string;
   entryDate!: string;
   creationDate!: string;

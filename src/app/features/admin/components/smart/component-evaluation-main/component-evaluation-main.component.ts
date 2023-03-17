@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ComponentDto} from "../../../model/dto/component.dto";
+import {ComponentDto} from "../../../model/dto/read/component.dto";
 
 @Component({
   selector: 'app-component-evaluation-main',

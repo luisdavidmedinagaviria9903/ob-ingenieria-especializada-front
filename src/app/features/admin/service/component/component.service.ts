@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../../environments/environment";
-import {ComponentDto} from "../../model/dto/component.dto";
+import {ComponentDto} from "../../model/dto/read/component.dto";
 import {catchError, map, Observable} from "rxjs";
-import {ComponentTypeDto} from "../../model/dto/componentType.dto";
-import {ComponentEntryTypeSpecsDto} from "../../model/dto/component-entry-type-specs.dto";
+import {ComponentTypeDto} from "../../model/dto/read/componentType.dto";
+import {ComponentEntryTypeSpecsDto} from "../../model/dto/read/component-entry-type-specs.dto";
+import {WComponentEntryDto} from "../../model/dto/write/w-component-entry.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class ComponentService {
   constructor(private http: HttpClient) { }
 
 
-  saveComponent(params: ComponentDto){
+  saveComponent(params: WComponentEntryDto){
     return this.http.post<any>(this.saveComponentUrl, params);
   }
 

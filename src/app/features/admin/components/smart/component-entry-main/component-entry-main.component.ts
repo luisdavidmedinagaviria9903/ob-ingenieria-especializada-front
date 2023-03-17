@@ -1,10 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ComponentEntryDto} from "../../../model/dto/component-entry.dto";
-import {UserDto} from "../../../model/dto/user.dto";
-import {ComponentDto} from "../../../model/dto/component.dto";
-import {ComponentEntryInventoryDto} from "../../../model/dto/component-entry-inventory.dto";
-import {ComponentEntryPicturesDto} from "../../../model/dto/component-entry-pictures.dto";
+import {ComponentEntryDto} from "../../../model/dto/read/component-entry.dto";
+import {UserDto} from "../../../model/dto/read/user.dto";
+import {ComponentDto} from "../../../model/dto/read/component.dto";
+import {ComponentEntryInventoryDto} from "../../../model/dto/read/component-entry-inventory.dto";
+import {ComponentEntryPicturesDto} from "../../../model/dto/read/component-entry-pictures.dto";
 import {
   CONTACT_SUPPORT,
   INVALID_OR_MISSING_FIELDS,
@@ -16,6 +16,8 @@ import {MatStepper} from "@angular/material/stepper";
 import {ComponentEntryService} from "../../../service/component/component-entry.service";
 import {DateUtil} from "../../../../shared/dateUtil";
 import {ComponentService} from "../../../service/component/component.service";
+import {WComponentDto} from "../../../model/dto/write/w-component.dto";
+import {WComponentEntryDto} from "../../../model/dto/write/w-component-entry.dto";
 
 @Component({
   selector: 'app-component-entry-main',
@@ -65,20 +67,18 @@ export class ComponentEntryMainComponent {
       show_popup(TITLE_INFO, INVALID_OR_MISSING_FIELDS).then(() => this.myStepper.selectedIndex = 0)
       return;
     }
-    let component = new ComponentDto();
-    let componentEntry = new ComponentEntryDto();
-    let client = new UserDto();
+    let component = new WComponentDto();
+    let componentEntry = new WComponentEntryDto();
     let componentInventory: ComponentEntryInventoryDto[] = [];
     let componentPictures: ComponentEntryPicturesDto[] = [];
 
-    client.id = this.clientField?.value;
-    componentEntry.client = client;
+    component.client = this.clientField?.value;
     componentEntry.observation = this.observationField?.value;
-    componentEntry.entryDate = DateUtil.addHourToDate(this.dateField?.value, this.hourField?.value)
+    component.entryDate = DateUtil.addHourToDate(this.dateField?.value, this.hourField?.value)
 
     component.type = this.componentTypeField?.value;
     //TODO: User must be authenticated
-    component.creationUser = "1";
+    componentEntry.creationUser = 1;
 
     this.inventoryField.controls.forEach(item => {
       let itemChecked = item.get('checked')?.value;
@@ -100,9 +100,9 @@ export class ComponentEntryMainComponent {
     })
     componentEntry.inventory = componentInventory;
     componentEntry.pictures = componentPictures;
-    component.componentEntry = componentEntry;
+    componentEntry.component = component;
 
-   this.componentService.saveComponent(component).subscribe({
+   this.componentService.saveComponent(componentEntry).subscribe({
       next: value => {
           if (value && value.id){
             show_popup(TITLE_SUCCESS, "Registro guardado correctamente").then(() => {

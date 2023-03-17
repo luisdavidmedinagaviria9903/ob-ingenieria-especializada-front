@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {catchError, map, Observable} from "rxjs";
-import {UserDto} from "../model/dto/user.dto";
+import {UserDto} from "../model/dto/read/user.dto";
 
 @Injectable({
   providedIn: 'root'

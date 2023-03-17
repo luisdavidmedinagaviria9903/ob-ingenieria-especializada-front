@@ -1,5 +1,5 @@
 import {ComponentTypeDto} from "./componentType.dto";
-import {ComponentEntryInventorySpecsDto} from "./Component-entry-inventory-specs.dto";
+import {ComponentEntryInventorySpecsDto} from "./component-entry-inventory-specs.dto";
 
 export class ComponentEntryTypeSpecsDto{
   id!: number;

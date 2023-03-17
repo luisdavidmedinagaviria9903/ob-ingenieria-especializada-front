@@ -1,16 +1,16 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentDto} from "../../../model/dto/component.dto";
+import {ComponentDto} from "../../../model/dto/read/component.dto";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatSort, Sort} from "@angular/material/sort";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {MiscTypeDto} from "../../../model/dto/miscType.dto";
-import {UserDto} from "../../../model/dto/user.dto";
+import {MiscTypeDto} from "../../../model/dto/read/miscType.dto";
+import {UserDto} from "../../../model/dto/read/user.dto";
 import {ComponentService} from "../../../service/component/component.service";
 import {MiscTypeService} from "../../../service/misc-type.service";
 import {UserService} from "../../../service/user.service";
 import {MatDialog} from "@angular/material/dialog";
-import {FindAllEntryParams} from "../../../model/dto/FindAllEntryParams";
-import {MiscTypeEnum} from "../../../model/misc-type-enum";
+import {FindAllEntryParams} from "../../../model/dto/utility/FindAllEntryParams";
+import {MiscTypeEnum} from "../../../model/enum/misc-type-enum";
 import {CONTACT_SUPPORT, show_popup, TITLE_ERROR} from "../../../../shared/popup-alert";
 import {
   ComponentEntryPreviewComponent

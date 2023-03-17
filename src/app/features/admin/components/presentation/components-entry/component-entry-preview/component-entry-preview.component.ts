@@ -2,8 +2,8 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormArray, FormGroup} from "@angular/forms";
 import {Image} from "../../../smart/component-entry-main/component-entry-main.component";
 import {DateUtil} from "../../../../../shared/dateUtil";
-import {ComponentEntryDto} from "../../../../model/dto/component-entry.dto";
-import {ComponentDto} from "../../../../model/dto/component.dto";
+import {ComponentEntryDto} from "../../../../model/dto/read/component-entry.dto";
+import {ComponentDto} from "../../../../model/dto/read/component.dto";
 
 
 @Component({

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {catchError, map, Observable} from "rxjs";
-import {MiscTypeDto} from "../model/dto/miscType.dto";
-import {ComponentTypeDto} from "../model/dto/componentType.dto";
+import {MiscTypeDto} from "../model/dto/read/miscType.dto";
+import {ComponentTypeDto} from "../model/dto/read/componentType.dto";
 
 @Injectable({
   providedIn: 'root'
