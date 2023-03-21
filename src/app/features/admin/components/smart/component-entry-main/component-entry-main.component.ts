@@ -1,8 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ComponentEntryDto} from "../../../model/dto/read/component-entry.dto";
 import {UserDto} from "../../../model/dto/read/user.dto";
-import {ComponentDto} from "../../../model/dto/read/component.dto";
 import {ComponentEntryInventoryDto} from "../../../model/dto/read/component-entry-inventory.dto";
 import {ComponentEntryPicturesDto} from "../../../model/dto/read/component-entry-pictures.dto";
 import {
@@ -18,6 +16,7 @@ import {DateUtil} from "../../../../shared/dateUtil";
 import {ComponentService} from "../../../service/component/component.service";
 import {RWComponentDto} from "../../../model/dto/write/r-w-component.dto";
 import {RWComponentEntryDto} from "../../../model/dto/write/r-w-component-entry.dto";
+import {Image} from "../../../model/interface/Image";
 
 @Component({
   selector: 'app-component-entry-main',
@@ -71,8 +70,10 @@ export class ComponentEntryMainComponent {
     let componentEntry = new RWComponentEntryDto();
     let componentInventory: ComponentEntryInventoryDto[] = [];
     let componentPictures: ComponentEntryPicturesDto[] = [];
+    let client = new UserDto();
+    client.id = this.clientField?.value;
 
-    component.client = this.clientField?.value;
+    component.client = client;
     componentEntry.observation = this.observationField?.value;
     component.entryDate = DateUtil.addHourToDate(this.dateField?.value, this.hourField?.value)
 
@@ -141,9 +142,6 @@ export class ComponentEntryMainComponent {
   get inventoryField(){
     return this.generalInfoForm.get('inventory') as FormArray;
   }
-}
-export interface Image{
-  blob: any;
-  checked: boolean;
-  name: string;
+
+
 }

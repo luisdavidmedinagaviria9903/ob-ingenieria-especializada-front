@@ -1,0 +1,18 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <h1 style="text-align: center">Observaciones finales</h1>
+      </div>
+      <form [formGroup]="form">
+        <div class="row">
+          <mat-form-field appearance="fill">
+            <mat-label>Observaciones</mat-label>
+            <textarea matInput formControlName="observations"></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

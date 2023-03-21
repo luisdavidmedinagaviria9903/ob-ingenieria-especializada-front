@@ -1,9 +1,58 @@
 <mat-stepper labelPosition="bottom" #stepper class="container" style="max-width: 800px">
   <mat-step [stepControl]="selectEntryForm">
     <ng-template matStepLabel>Seleccionar entrada</ng-template>
-    <app-select-entry [form]="selectEntryForm"></app-select-entry>
+    <app-select-entry [form]="selectEntryForm"
+                      [files]="files"
+    ></app-select-entry>
     <div>
       <button mat-raised-button matStepperNext [disabled]="selectEntryForm?.invalid">Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="evaluationMechanicalForm">
+    <ng-template matStepLabel>Evaluacion mecanica/electrica</ng-template>
+    <app-evaluation-mechanical-electrical [form]="evaluationMechanicalForm"
+                                          [specifications]="evaluationMechanicalSpecs"
+                                          [inventoryStatus]="inventoryStatus"
+    ></app-evaluation-mechanical-electrical>
+    <div>
+      <button mat-raised-button matStepperPrevious>Previous</button>
+      <button mat-raised-button matStepperNext [disabled]="evaluationMechanicalForm?.invalid">Next</button>
+    </div>
+  </mat-step>
+
+
+  <mat-step [stepControl]="evaluationInventoryForm">
+    <ng-template matStepLabel>Descripcion e inventario de partes</ng-template>
+    <app-evaluation-inventory [form]="evaluationInventoryForm"
+                              [specifications]="evaluationInventorySpecs"
+                              [inventoryStatus]="inventoryStatus"
+    ></app-evaluation-inventory>
+    <div>
+      <button mat-raised-button matStepperPrevious>Previous</button>
+      <button mat-raised-button matStepperNext [disabled]="evaluationInventoryForm?.invalid">Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="selectImagesForm">
+    <ng-template matStepLabel>Seleccionar imagenes</ng-template>
+    <app-evaluation-select-images [form]="selectImagesForm"
+                                  [evaluationMechanicalForm]="evaluationMechanicalForm"
+                                  [evaluationInventoryForm]="evaluationInventoryForm"
+                                  [images]="files"
+    >
+    </app-evaluation-select-images>
+    <div>
+      <button mat-raised-button matStepperPrevious>Previous</button>
+      <button mat-raised-button matStepperNext [disabled]="evaluationInventoryForm?.invalid">Next</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="evaluationInventoryForm">
+    <ng-template matStepLabel>Observaciones</ng-template>
+    <app-evaluation-observations [form]="observationsForms"></app-evaluation-observations>
+    <div>
+      <button mat-raised-button matStepperPrevious>Previous</button>
+      <button class="btn btn-danger" (click)="save()">Guardar</button>
     </div>
   </mat-step>
 </mat-stepper>

@@ -6,7 +6,7 @@ export class RWComponentDto {
   eq!: string;
   status!: number;
 
-  client!: number;
+  client!: UserDto;
 
   entryDate!: string;
   creationDate!: string;

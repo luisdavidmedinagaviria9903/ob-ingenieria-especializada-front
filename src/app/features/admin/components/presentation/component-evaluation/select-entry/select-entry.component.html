@@ -9,11 +9,22 @@
           <mat-form-field class="col-12" appearance="fill">
             <mat-label>Selecciona una entrada de componente</mat-label>
             <mat-select formControlName="entry">
-              <mat-option *ngFor="let entry of entries" [value]="entry.id">
-                {{entry.component.eq + ' ' + entry.component.type + ' ' + entry.component.client + ' ' + entry.creationDate}}
+              <mat-option *ngFor="let entry of entries" [value]="entry">
+                {{entry.component.eq + '-' + entry.component.type.toString().toUpperCase() + '-' +
+                  entry.component.client.firstName.toString().toUpperCase() + '-'}}
+                {{entry.creationDate |  date:'short'}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <div class="col-12">
+            <label for="formFileLg" class="form-label">Seleccione las imagenes</label>
+            <input class="form-control form-control-lg"
+                   type="file"
+                   id="formFileLg"
+                   (change)="uploadFile($event)"
+                   accept="image/*"
+                   multiple>
+          </div>
         </div>
       </form>
     </mat-card-content>

@@ -1,0 +1,41 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <h1 style="text-align: center">Selecciona una imagen para {{specCode.toUpperCase()}}</h1>
+      </div>
+      <div class="row">
+        <form [formGroup]="form">
+          <ng-container *ngIf="images && images.length > 0; else noImages">
+            <mat-selection-list class="" [multiple]="false">
+              <mat-list-option *ngFor="let image of images; let i=index"
+                               [value]="image"
+                               class=""
+                               (click)="setSelected(image)"
+                               color="primary"
+                               style="margin-bottom: 1.5rem; height: 100px"
+              >
+                <img class="" [src]="image.blob" alt="image item" style="width: 40%;height: 100%;aspect-ratio: 3/2;object-fit: contain;">
+              </mat-list-option>
+            </mat-selection-list>
+          </ng-container>
+          <ng-template #noImages>
+            <h2>No subiste ninguna imagen, por favor verifica.</h2>
+          </ng-template>
+        </form>
+      </div>
+    </mat-card-content>
+    <mat-card-actions style="justify-content: center; padding: 1rem">
+      <div style="margin: 0 1.5rem">
+        <button mat-raised-button color="primary" matDialogClose="">
+          Guardar seleccion
+        </button>
+      </div>
+      <div>
+        <button mat-raised-button color="warn" matDialogClose="">
+          Volver atras
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

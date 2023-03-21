@@ -15,7 +15,7 @@ import {CONTACT_SUPPORT, show_popup, TITLE_ERROR} from "../../../../shared/popup
 import {
   ComponentEntryPreviewComponent
 } from "../components-entry/component-entry-preview/component-entry-preview.component";
-import {Image} from "../../smart/component-entry-main/component-entry-main.component";
+import {Image} from "../../../model/interface/Image";
 
 @Component({
   selector: 'app-component-list',

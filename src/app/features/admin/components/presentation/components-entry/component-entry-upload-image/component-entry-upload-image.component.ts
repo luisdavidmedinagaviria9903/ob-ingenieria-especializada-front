@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {FileUtil} from "../../../../../shared/fileUtil";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Image} from "../../../smart/component-entry-main/component-entry-main.component";
+import {Image} from "../../../../model/interface/Image";
+
 
 @Component({
   selector: 'app-component-entry-upload-image',

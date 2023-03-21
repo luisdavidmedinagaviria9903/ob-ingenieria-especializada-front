@@ -27,13 +27,20 @@ import {MatSortModule} from "@angular/material/sort";
 import { ComponentListComponent } from './components/presentation/component-list/component-list.component';
 import { ComponentEvaluationMainComponent } from './components/smart/component-evaluation-main/component-evaluation-main.component';
 import { SelectEntryComponent } from './components/presentation/component-evaluation/select-entry/select-entry.component';
+import { EvaluationMechanicalElectricalComponent } from './components/presentation/component-evaluation/evaluation-mechanical-electrical/evaluation-mechanical-electrical.component';
+import { EvaluationInventoryComponent } from './components/presentation/component-evaluation/evaluation-inventory/evaluation-inventory.component';
+import { EvaluationObservationsComponent } from './components/presentation/component-evaluation/evaluation-observations/evaluation-observations.component';
+import { EvaluationSelectImagesComponent } from './components/presentation/component-evaluation/evaluation-select-images/evaluation-select-images.component';
+import { EvaluationPickSpecImageComponent } from './components/presentation/component-evaluation/evaluation-pick-spec-image/evaluation-pick-spec-image.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
 @NgModule({
   declarations: [AdminHomeComponent, ComponentEntryMainComponent, ComponentEntryGeneralInfoComponent,
     ComponentEntryUploadImageComponent, ComponentEntryObservationsComponent, ComponentEntryPreviewComponent,
-    ComponentEntryListComponent, ComponentListComponent, ComponentEvaluationMainComponent, SelectEntryComponent],
+    ComponentEntryListComponent, ComponentListComponent, ComponentEvaluationMainComponent, SelectEntryComponent,
+    EvaluationMechanicalElectricalComponent, EvaluationInventoryComponent, EvaluationObservationsComponent, EvaluationSelectImagesComponent, EvaluationPickSpecImageComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -53,7 +60,8 @@ import { SelectEntryComponent } from './components/presentation/component-evalua
     MatTableModule,
     MatIconModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }

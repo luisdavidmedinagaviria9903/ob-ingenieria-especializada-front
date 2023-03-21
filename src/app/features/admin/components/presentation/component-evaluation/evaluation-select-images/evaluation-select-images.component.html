@@ -1,0 +1,46 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <h1 style="text-align: center">Seleccionar imagenes</h1>
+      </div>
+      <div class="row">
+          <h3 style="text-align: center">Evaluacion mecanica/electrica</h3>
+          <ng-container *ngIf="evaluationMechanicalForm && evaluationMechanicalInventoryField.length > 0">
+            <ng-container *ngFor="let field of evaluationMechanicalInventoryField.controls; let i=index">
+              <div  class="col-4" style="display: flex;align-items: center;justify-content: center;">
+                <p>
+                  {{field?.value?.description}}
+                </p>
+              </div>
+              <div  class="col-2" style="margin-bottom: 1rem">
+                <button mat-fab [color]="isImageUploaded(field?.value?.code) ? 'primary' :  'warn'" (click)="selectImage(field?.value?.code)">
+                  <mat-icon>{{isImageUploaded(field?.value?.code) ? 'download_done' :  'upload' }}</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+          </ng-container>
+      </div>
+      <div class="row">
+        <h3 style="text-align: center">Descripcion e inventario de partes</h3>
+        <ng-container *ngIf="evaluationInventoryForm && evaluationInventoryField.length > 0">
+          <ng-container *ngFor="let fieldInventory of evaluationInventoryField.controls; let i=index">
+            <div  class="col-4" style="display: flex;align-items: center;justify-content: center;">
+              <p>
+                {{fieldInventory?.value?.description}}
+              </p>
+            </div>
+            <div  class="col-2" style="margin-bottom: 1rem">
+              <button mat-fab [color]="isImageUploaded(fieldInventory?.value?.code) ? 'primary' :  'warn'" (click)="selectImage(fieldInventory?.value?.code)">
+                <mat-icon>{{isImageUploaded(fieldInventory?.value?.code) ? 'download_done' :  'upload' }}}</mat-icon>
+              </button>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <pre>{{form.value | json}}</pre>
+    </mat-card-actions>
+  </mat-card>
+</div>
